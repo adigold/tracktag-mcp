@@ -43,3 +43,19 @@ claude mcp add tracktag -e TRACKTAG_API_KEY=tt_live_YOUR_KEY -- npx -y tracktag-
 ## Docs
 
 Full API reference: [tracktag.me/developers](https://tracktag.me/developers)
+
+## About the creator
+
+TrackTag is built by **[Adi Goldstein](https://adigoldstein.com)** — a composer and music producer based in Tel Aviv who has spent years on both sides of the problem: writing and licensing music, and wrestling with the metadata that makes it findable. TrackTag exists because tagging a catalog by hand is the least musical part of making music.
+
+It's part of a family of tools Adi builds for musicians and creators:
+
+| Project | What it does |
+|---|---|
+| [TrackTag](https://tracktag.me) | AI music tagging — BPM, key, genres, moods and 35+ metadata fields per track, for catalogs, sync libraries and now AI assistants |
+| [AGsoundtrax](https://agsoundtrax.com) | Curated royalty-free music library for filmmakers, video creators and commercial producers |
+| [PromoLinks](https://promolinks.me) | Smart links and artist pages for musicians — one URL that routes fans to their preferred streaming platform, with pre-saves and analytics |
+| [MakeCanvas](https://makecanvas.me) | AI-generated Spotify Canvas videos — looping visuals for your tracks, no video editing needed |
+| [AG Watermark](https://agwatermark.com) | Audio watermarking to protect tracks and demos before they're licensed |
+
+Questions, ideas, or building something with the TrackTag API? Reach out via [tracktag.me/support](https://tracktag.me/support).
