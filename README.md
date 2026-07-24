@@ -6,8 +6,15 @@ Runs entirely on your own computer — your agent app starts it, talks to it dir
 
 ## Setup
 
-1. Get an API key: [tracktag.me/studio](https://tracktag.me/studio) → **API & MCP** → Create key (`tt_live_…`).
-2. Add the server to your agent's MCP config:
+First, get an API key: [tracktag.me/studio](https://tracktag.me/studio) → **API & MCP** → Create key (`tt_live_…`). Free test keys available.
+
+### ⚡ One-click install (Claude Desktop) — recommended
+
+**[Download tracktag.mcpb](https://tracktag.me/downloads/tracktag.mcpb)** → **double-click it** → Claude Desktop opens an install window → paste your API key → done. No config files, no Node.js, nothing to edit. (One Claude quirk: after installing, flip the extension **ON** in Settings → Extensions.)
+
+### Manual config (Cursor, Claude Code, other MCP clients)
+
+Add the server to your agent's MCP config:
 
 **Claude Desktop** (`~/Library/Application Support/Claude/claude_desktop_config.json`):
 
