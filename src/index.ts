@@ -11,8 +11,9 @@
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import { z } from "zod";
-import { readFile, stat } from "node:fs/promises";
-import { extname, basename } from "node:path";
+import { readFile, readdir, stat } from "node:fs/promises";
+import { extname, basename, join } from "node:path";
+import { homedir } from "node:os";
 
 const API_BASE = process.env.TRACKTAG_API_BASE ?? "https://aaeabanvqnndwgrqsmhg.supabase.co/functions/v1/api-v1";
 const API_KEY = process.env.TRACKTAG_API_KEY;
@@ -70,11 +71,55 @@ function summarize(job: any): string {
   return `${head}\n\nFull analysis JSON:\n${JSON.stringify(job?.result ?? job, null, 2)}`;
 }
 
-const server = new McpServer({ name: "tracktag", version: "0.1.0" });
+// Recursively scan common folders for audio files matching a query. Depth- and
+// count-limited so a huge Music library can't hang the tool.
+const AUDIO_EXTS = new Set(Object.keys(MIME_BY_EXT));
+
+async function scanForAudio(dir: string, query: string, depth: number, hits: { path: string; size: number; mtime: Date }[]): Promise<void> {
+  if (depth < 0 || hits.length >= 25) return;
+  let entries;
+  try { entries = await readdir(dir, { withFileTypes: true }); } catch { return; }
+  for (const e of entries) {
+    if (hits.length >= 25) return;
+    if (e.name.startsWith(".")) continue;
+    const full = join(dir, e.name);
+    if (e.isDirectory()) {
+      await scanForAudio(full, query, depth - 1, hits);
+    } else if (AUDIO_EXTS.has(extname(e.name).toLowerCase()) && e.name.toLowerCase().includes(query)) {
+      try {
+        const s = await stat(full);
+        hits.push({ path: full, size: s.size, mtime: s.mtime });
+      } catch { /* unreadable — skip */ }
+    }
+  }
+}
+
+const server = new McpServer({ name: "tracktag", version: "0.2.0" });
+
+server.tool(
+  "find_audio_files",
+  "Find audio files on this machine by (partial) name — searches Downloads, Desktop, Music and Documents. Use this to resolve a file path when the user mentions a track by name (e.g. after dragging a file into chat, which does not reveal its local path). Free.",
+  {
+    query: z.string().min(1).describe("Part of the file name, case-insensitive (e.g. 'sunset drive')"),
+  },
+  async ({ query }) => {
+    const q = query.toLowerCase();
+    const home = homedir();
+    const hits: { path: string; size: number; mtime: Date }[] = [];
+    for (const folder of ["Downloads", "Desktop", "Music", "Documents"]) {
+      await scanForAudio(join(home, folder), q, 3, hits);
+    }
+    hits.sort((a, b) => b.mtime.getTime() - a.mtime.getTime());
+    const text = hits.length
+      ? hits.map((h) => `${h.path}  (${(h.size / 1024 / 1024).toFixed(1)} MB, modified ${h.mtime.toISOString().slice(0, 10)})`).join("\n")
+      : `No audio files matching "${query}" in Downloads/Desktop/Music/Documents. Ask the user for the full path (Finder: right-click the file, hold Option, "Copy … as Pathname").`;
+    return { content: [{ type: "text", text }] };
+  },
+);
 
 server.tool(
   "analyze_track",
-  "Analyze a LOCAL audio file (mp3/wav/flac/aiff/m4a/ogg, up to 15 MB) with TrackTag AI. Returns BPM, key, genres, moods, instruments, energy and 35+ metadata fields. Costs 1 TrackTag credit (model 'core') or 2 ('ultra') from the user's balance; failed analyses are auto-refunded. For files over 15 MB or already-hosted audio, use analyze_url.",
+  "Analyze a LOCAL audio file (mp3/wav/flac/aiff/m4a/ogg, up to 15 MB) with TrackTag AI. Returns BPM, key, genres, moods, instruments, energy and 35+ metadata fields. Costs 1 TrackTag credit (model 'core') or 2 ('ultra') from the user's balance; failed analyses are auto-refunded. Needs the file's real path on this machine — if you only know the track's name (e.g. the user dragged a file into chat), call find_audio_files first. For files over 15 MB or already-hosted audio, use analyze_url.",
   {
     file_path: z.string().describe("Absolute path to the audio file on this machine"),
     model: z.enum(["core", "ultra"]).default("core").describe("core = 1 credit, ultra = 2 credits (deeper analysis)"),

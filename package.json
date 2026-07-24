@@ -1,8 +1,8 @@
 {
   "name": "tracktag-mcp",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "mcpName": "io.github.adigold/tracktag-mcp",
-  "description": "TrackTag MCP server — let AI agents (Claude, Cursor, etc.) analyze music files via the TrackTag API: BPM, key, genres, moods, instruments and 35+ metadata fields per track.",
+  "description": "TrackTag MCP server \u2014 let AI agents (Claude, Cursor, etc.) analyze music files via the TrackTag API: BPM, key, genres, moods, instruments and 35+ metadata fields per track.",
   "license": "MIT",
   "type": "module",
   "bin": {
