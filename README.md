@@ -44,6 +44,12 @@ claude mcp add tracktag -e TRACKTAG_API_KEY=tt_live_YOUR_KEY -- npx -y tracktag-
 
 Full API reference: [tracktag.me/developers](https://tracktag.me/developers)
 
+## Can I analyze multiple tracks? (batching)
+
+**Yes — small batches work right in the chat.** Drop several audio files into your assistant (or name a folder's worth of tracks) and say *"analyze all of these with TrackTag"* — the agent calls the analysis tool once per track and summarizes the results together. Each track bills its own credit, and the default rate limit (10 requests/minute) makes this comfortable for a handful of tracks at a time.
+
+**For real catalog work, use the tools built for it:** [TrackTag Studio](https://tracktag.me/studio) runs 100-file batches with folders, progress tracking and XLSX/CSV/XML exports, and the [TrackTag API](https://tracktag.me/developers) handles high-volume pipelines with async jobs and webhooks. Same engine, same credits — pick the surface that fits the job: MCP for conversation, Studio for catalogs, API for automation.
+
 ## "Can't I just drag the MP3 into the chat and ask?"
 
 **Not if you want real, reliable metadata — and here's the honest breakdown.**
