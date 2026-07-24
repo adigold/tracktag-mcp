@@ -44,6 +44,18 @@ claude mcp add tracktag -e TRACKTAG_API_KEY=tt_live_YOUR_KEY -- npx -y tracktag-
 
 Full API reference: [tracktag.me/developers](https://tracktag.me/developers)
 
+## "Can't I just drag the MP3 into the chat and ask?"
+
+**No — and this is the whole point of TrackTag.**
+
+**Claude cannot hear audio.** Drop an MP3 into a Claude chat and it can read the file's *name and metadata* — it never processes a single sample of the actual sound. Any "analysis" you get back is an educated guess from the title.
+
+TrackTag is different: your file is sent through a **dedicated audio-analysis pipeline that processes the actual waveform** — the sound itself, not the filename. The signal is analyzed for tempo, tonality, timbre, instrumentation, vocal characteristics, dynamics and spectral texture, then mapped onto a **professional music-industry taxonomy of 35+ fields** refined across hundreds of thousands of real production tracks.
+
+Just as important for anyone tagging more than one file: **consistency.** A casual chat prompt produces different fields, different vocabulary and different judgments every run. TrackTag returns the same structured schema with the same controlled vocabulary for every track — which is what makes a catalog searchable, filterable and store-ready. That consistency simply cannot be reproduced by ad-hoc prompting, in any chat app, with any model.
+
+This MCP server is the bridge: your AI assistant does what it's great at (conversation, workflow, summarizing), and TrackTag does what it's built for (actually listening).
+
 ## About the creator
 
 TrackTag is built by **[Adi Goldstein](https://adigoldstein.com)** — a composer and music producer based in Tel Aviv who has spent years on both sides of the problem: writing and licensing music, and wrestling with the metadata that makes it findable. TrackTag exists because tagging a catalog by hand is the least musical part of making music.
