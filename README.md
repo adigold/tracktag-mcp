@@ -46,15 +46,15 @@ Full API reference: [tracktag.me/developers](https://tracktag.me/developers)
 
 ## "Can't I just drag the MP3 into the chat and ask?"
 
-**No — and this is the whole point of TrackTag.**
+**Not if you want real, reliable metadata — and here's the honest breakdown.**
 
-**Claude cannot hear audio.** Drop an MP3 into a Claude chat and it can read the file's *name and metadata* — it never processes a single sample of the actual sound. Any "analysis" you get back is an educated guess from the title.
+**Claude cannot hear audio.** Drop an MP3 into a Claude chat and it sees the file's *name and metadata* — it never processes the actual sound. Whatever "analysis" comes back is an educated guess from the title. This MCP server is what gives Claude real ears.
 
-TrackTag is different: your file is sent through a **dedicated audio-analysis pipeline that processes the actual waveform** — the sound itself, not the filename. The signal is analyzed for tempo, tonality, timbre, instrumentation, vocal characteristics, dynamics and spectral texture, then mapped onto a **professional music-industry taxonomy of 35+ fields** refined across hundreds of thousands of real production tracks.
+**Some models can accept audio — but a raw model is not an analysis product.** TrackTag runs every track through a purpose-built pipeline: audio preprocessing, signal-level analysis of the actual waveform (tempo, tonality, timbre, instrumentation, vocal characteristics, dynamics), an extraction process tuned specifically for music metadata, and validation of every result against a **strict 35+ field taxonomy with controlled vocabulary**. A one-off chat prompt gives you different fields, different wording and different judgments every single run — fine for curiosity, useless for a catalog.
 
-Just as important for anyone tagging more than one file: **consistency.** A casual chat prompt produces different fields, different vocabulary and different judgments every run. TrackTag returns the same structured schema with the same controlled vocabulary for every track — which is what makes a catalog searchable, filterable and store-ready. That consistency simply cannot be reproduced by ad-hoc prompting, in any chat app, with any model.
+**Consistency is the product.** Sync libraries, marketplaces and labels need the same schema, the same vocabulary and the same standards across 10 or 10,000 tracks — plus batch handling and automatic refunds when an analysis fails. That's engineering around the model, not the model itself, and it's what you're getting here.
 
-This MCP server is the bridge: your AI assistant does what it's great at (conversation, workflow, summarizing), and TrackTag does what it's built for (actually listening).
+Your AI assistant does what it's great at — conversation and workflow. TrackTag does what it's built for — turning sound into professional, uniform metadata.
 
 ## About the creator
 
