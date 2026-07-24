@@ -1,0 +1,46 @@
+{
+  "name": "tracktag-mcp",
+  "version": "0.1.1",
+  "mcpName": "io.github.adigold/tracktag-mcp",
+  "description": "TrackTag MCP server — let AI agents (Claude, Cursor, etc.) analyze music files via the TrackTag API: BPM, key, genres, moods, instruments and 35+ metadata fields per track.",
+  "license": "MIT",
+  "type": "module",
+  "bin": {
+    "tracktag-mcp": "dist/index.js"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc && node -e \"require('fs').chmodSync('dist/index.js', 0o755)\"",
+    "prepublishOnly": "npm run build"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": [
+    "mcp",
+    "modelcontextprotocol",
+    "music",
+    "audio-analysis",
+    "music-tagging",
+    "bpm",
+    "metadata",
+    "tracktag"
+  ],
+  "homepage": "https://tracktag.me/developers",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adigold/tracktag.git",
+    "directory": "mcp-server"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.0",
+    "zod": "^3.23.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.4.0"
+  }
+}

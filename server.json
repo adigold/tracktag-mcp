@@ -1,0 +1,29 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-07-09/server.schema.json",
+  "name": "io.github.adigold/tracktag-mcp",
+  "description": "Analyze music with TrackTag AI: BPM, key, genres, moods, instruments, energy and 35+ metadata fields per track. Analyses use TrackTag credits.",
+  "repository": {
+    "url": "https://github.com/adigold/tracktag",
+    "source": "github"
+  },
+  "version": "0.1.1",
+  "packages": [
+    {
+      "registry_type": "npm",
+      "registry_base_url": "https://registry.npmjs.org",
+      "identifier": "tracktag-mcp",
+      "version": "0.1.1",
+      "transport": {
+        "type": "stdio"
+      },
+      "environment_variables": [
+        {
+          "name": "TRACKTAG_API_KEY",
+          "description": "TrackTag API key (tt_live_...) — create one at https://tracktag.me/studio, API & MCP tab",
+          "is_required": true,
+          "is_secret": true
+        }
+      ]
+    }
+  ]
+}
