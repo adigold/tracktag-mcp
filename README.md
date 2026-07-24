@@ -2,7 +2,7 @@
 
 Let AI agents (Claude Desktop, Claude Code, Cursor, and any MCP-capable client) analyze music with [TrackTag](https://tracktag.me): drop an MP3 into your agent, say *"analyze this track"*, and get BPM, key, genres, moods, instruments, energy and 35+ metadata fields back.
 
-Runs locally over stdio — nothing is hosted, the server only lives while your agent app is open. Analyses are billed from your TrackTag credit balance (1 credit per track with the `core` model, 2 with `ultra`); failed analyses are refunded automatically.
+Runs entirely on your own computer — your agent app starts it, talks to it directly (no middleman server, so your audio and API key never leave your machine on the way to TrackTag), and stops it when you quit. Analyses are billed from your TrackTag credit balance (1 credit per track with the `core` model, 2 with `ultra`); failed analyses are refunded automatically.
 
 ## Setup
 
