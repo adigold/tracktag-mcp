@@ -57,11 +57,11 @@ Full API reference: [tracktag.me/developers](https://tracktag.me/developers)
 
 **For real catalog work, use the tools built for it:** [TrackTag Studio](https://tracktag.me/studio) runs 100-file batches with folders, progress tracking and XLSX/CSV/XML exports, and the [TrackTag API](https://tracktag.me/developers) handles high-volume pipelines with async jobs and webhooks. Same engine, same credits — pick the surface that fits the job: MCP for conversation, Studio for catalogs, API for automation.
 
-## "Can't I just drag the MP3 into the chat and ask?"
+## "Can't I just drag the MP3 into ChatGPT or Claude and ask?"
 
 **Not if you want real, reliable metadata — and here's the honest breakdown.**
 
-**Claude cannot hear audio.** Drop an MP3 into a Claude chat and it sees the file's *name and metadata* — it never processes the actual sound. Whatever "analysis" comes back is an educated guess from the title. This MCP server is what gives Claude real ears.
+**Claude cannot hear audio, and ChatGPT doesn't musically analyze it.** Drop an MP3 into a Claude chat and it sees the file's *name and metadata* — it never processes the actual sound. ChatGPT will at best transcribe any speech in the file; it won't tell you the key, the groove or the instrumentation from the waveform. Whatever "analysis" comes back is largely an educated guess from the title. This MCP server is what gives your assistant real ears.
 
 **Some models can accept audio — but a raw model is not an analysis product.** TrackTag runs every track through a purpose-built pipeline: audio preprocessing, signal-level analysis of the actual waveform (tempo, tonality, timbre, instrumentation, vocal characteristics, dynamics), an extraction process tuned specifically for music metadata, and validation of every result against a **strict 35+ field taxonomy with controlled vocabulary**. A one-off chat prompt gives you different fields, different wording and different judgments every single run — fine for curiosity, useless for a catalog.
 
