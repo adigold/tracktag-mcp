@@ -3,7 +3,7 @@
   "name": "io.github.adigold/tracktag-mcp",
   "description": "Analyze music with TrackTag AI: BPM, key, genres, moods, instruments, energy and 35+ metadata fields per track. Analyses use TrackTag credits.",
   "repository": {
-    "url": "https://github.com/adigold/tracktag",
+    "url": "https://github.com/adigold/tracktag-mcp",
     "source": "github"
   },
   "version": "0.1.1",

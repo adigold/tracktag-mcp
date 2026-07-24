@@ -32,8 +32,8 @@
   "homepage": "https://tracktag.me/developers",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/adigold/tracktag.git",
-    "directory": "mcp-server"
+    "url": "git+https://github.com/adigold/tracktag-mcp.git",
+    "directory": "."
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.0.0",
